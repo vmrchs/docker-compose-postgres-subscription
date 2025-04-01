@@ -1,0 +1,31 @@
+services:
+  pg_master:
+    image: postgres:16
+    container_name: pg_master
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5432:5432"
+    command: |
+      postgres 
+      -c wal_level=logical
+      -c max_wal_senders=10 
+      -c max_replication_slots=10
+    volumes:
+      - ./init-scripts/master-init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  pg_replica:
+    image: postgres:16
+    container_name: pg_replica
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./init-scripts/replica-init.sql:/docker-entrypoint-initdb.d/init.sql
+    depends_on:
+      - pg_master
