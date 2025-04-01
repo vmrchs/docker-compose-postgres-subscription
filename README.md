@@ -5,6 +5,7 @@ This repository demonstrates setting up logical replication between PostgreSQL i
 ## Overview
 
 The setup consists of two PostgreSQL containers:
+
 - `pg_master`: Primary database where data is written
 - `pg_replica`: Replica database that mirrors data from the master
 
@@ -43,6 +44,7 @@ After both containers are running, execute the setup script:
 ```
 
 This script will:
+
 1. Wait for both databases to be ready
 2. Create a subscription on the replica to connect to the master
 3. Begin replicating data from the master to the replica
@@ -78,22 +80,26 @@ You should see all the data, including the new "Monitor" record.
 If replication isn't working:
 
 1. Check that both containers are running:
+
 ```bash
 docker ps
 ```
 
 2. Check logs for any errors:
+
 ```bash
 docker logs pg_master
 docker logs pg_replica
 ```
 
 3. Verify network connectivity between containers:
+
 ```bash
 docker exec pg_replica ping pg_master
 ```
 
 4. Check replication status on the replica:
+
 ```bash
 docker exec -it pg_replica psql -U postgres -d testdb -c "SELECT * FROM pg_stat_subscription;"
 ```
