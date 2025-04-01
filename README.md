@@ -1,9 +1,7 @@
-# PostgreSQL Logical Replication Setup
-
+**# PostgreSQL Logical Replication Setup**
 This repository demonstrates setting up logical replication between PostgreSQL instances using Docker Compose.
 
-## Overview
-
+**## Overview**
 The setup consists of two PostgreSQL containers:
 
 - `pg_master`: Primary database where data is written
@@ -11,20 +9,19 @@ The setup consists of two PostgreSQL containers:
 
 Logical replication allows you to replicate specific tables rather than entire databases and supports replication between different PostgreSQL versions.
 
-## Repository Contents
+**## Repository Contents**
 
 - `docker-compose.yaml`: Defines the PostgreSQL containers
 - `init-scripts/master-init.sql`: Initializes the master database with tables and sample data
 - `init-scripts/replica-init.sql`: Initializes the replica database with table structure only
 - `setup-replication.sh`: Script to set up the replication between instances
 
-## Setup Instructions
-
-### 1. Clone the repository
+**## Setup Instructions**
+**### 1. Clone the repository**
 
 ```bash
-git clone https://github.com/vmrchs/postgres-replication-demo.git
-cd postgres-replication-demo
+git clone https://github.com/vmrchs/docker-compose-postgres-subscription.git
+cd docker-compose-postgres-subscription
 ```
 
 ### 2. Start the containers
