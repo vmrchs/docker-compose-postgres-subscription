@@ -23,7 +23,7 @@ Logical replication allows you to replicate specific tables rather than entire d
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/postgres-replication-demo.git
+git clone https://github.com/vmrchs/postgres-replication-demo.git
 cd postgres-replication-demo
 ```
 
